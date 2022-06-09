@@ -4,7 +4,6 @@
 **/.mvn
 **/target
 .idea
-**/README.md
 **/.idea
 **/**.iml
 **.iml
