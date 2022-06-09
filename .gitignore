@@ -1,0 +1,14 @@
+#新增忽略
+**/mvnw
+**/mvnw.cmd
+**/.mvn
+**/target
+.idea
+**/README.md
+**/.idea
+**/**.iml
+**.iml
+**/**.log
+**/src/main/resources/**.yml
+**/src/main/resources/**.yaml
+*.yml
