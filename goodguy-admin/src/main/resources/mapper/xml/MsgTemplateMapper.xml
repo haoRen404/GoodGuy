@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goodguy.admin.dao.MsgTemplateMapper">
+
+    <select id="findTemplatePage" resultType="com.goodguy.admin.po.TemplateAdminIndexPo">
+        SELECT
+            a.id, a.name, a.call_type_code, a.msg_type_code, a.send_channel_code,
+            a.cron, a.crowd_id_type_code, a.file_id, a.audit_status, a.msg_status,
+            b.nickname creatorName
+        FROM admin_msg_template a, admin_user b
+        WHERE a.creator_id = b.id and a.is_deleted = 0 and b.is_deleted = 0
+        ORDER BY id DESC
+    </select>
+
+    <select id="findSeeTemplate" resultType="java.util.HashMap">
+        SELECT
+            a.id,
+            a.name,
+            a.cron,
+            a.msg_content msgContent,
+            a.call_type_code callTypeCode,
+            a.msg_type_code msgTypeCode,
+            a.send_channel_code sendChannelCode,
+            a.crowd_id_type_code crowdIdTypeCode,
+            a.file_id fileId,
+            a.audit_status auditStatus,
+            a.msg_status msgStatus,
+            a.create_time createTime,
+            b.nickname creatorName
+        FROM admin_msg_template a, admin_user b
+        WHERE a.creator_id = b.id AND a.id = #{id} and a.is_deleted = 0 and b.is_deleted = 0
+        ORDER BY id DESC
+    </select>
+
+</mapper>
